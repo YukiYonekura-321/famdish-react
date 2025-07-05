@@ -1,8 +1,17 @@
 import Image from "next/image";
+import { Headline } from "./headline";
 
-export function Main() {
+export function Main(props) {
     return(
-              <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
+      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
+
+        <Headline 
+            page = {props.page} 
+            paragraph = {<p className="text-lg mt-4">This is a simple headline component that can be reused across different pages.</p>}
+            onClick={()=> alert("クリック！！")}
+        >
+            Welcome to the {props.page} Page
+        </Headline>
 
         <Image
           className="dark:invert"
