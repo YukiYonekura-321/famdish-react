@@ -1,0 +1,10 @@
+.main {
+  display: grid;
+  grid-template-rows: 20px 1fr 20px;
+  align-items: center;
+  justify-items: center;
+  min-height: 100vh;
+  padding: 10rem 10rem;
+  gap: 4rem;
+  font-family: var(--font-geist-sans);
+}
