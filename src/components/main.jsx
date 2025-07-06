@@ -1,36 +1,13 @@
 import Image from "next/image";
 import { Headline } from "./headline.jsx";
-import { use, useCallback, useState } from "react";
+import { useAdd } from "@/src/hooks/useAdd.jsx";
+import { useclickAlert } from "@/src/hooks/useclickAlert.jsx";
 
 export function Main(props) {
-    const [text, SetText] = useState("");
-    const [array, setArray] = useState([]);
 
-    const handleClick = useCallback(() => {
-      alert("クリック！！");
-    }, []);
+    const { text, array, handleChange, handleAdd } = useAdd();
 
-    const handleChange = useCallback((event) => {
-      if (event.target.value.length > 5) {
-        alert("5文字以下で入力してください");
-        return;
-      }
-      SetText(event.target.value.trim());
-    }, []);
-
-    const handleAdd = useCallback(() => {
-      setArray((prevArray) => {
-        if (text === "") {
-          alert("入力してください");
-          return prevArray;
-        }
-        if (prevArray.includes(text)) {
-          alert("同じ値が既に存在します");
-          return prevArray;
-        }
-        return [...prevArray, text];
-      });
-    }, [text]);
+    const handleClick = useclickAlert();
 
     return(
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
