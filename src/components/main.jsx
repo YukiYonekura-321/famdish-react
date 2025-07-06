@@ -1,14 +1,19 @@
 import Image from "next/image";
 import { Headline } from "./headline.jsx";
+import { useCallback } from "react";
 
 export function Main(props) {
+    const handleClick = useCallback(() => {
+      alert("クリック！！");
+    }, []);
+
     return(
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
 
         <Headline 
             page = {props.page} 
             paragraph = {<p className="text-lg mt-4">This is a simple headline component that can be reused across different pages.</p>}
-            onClick={()=> alert("クリック！！")}
+            onClick={handleClick}
         >
             Welcome to the {props.page} Page
         </Headline>
