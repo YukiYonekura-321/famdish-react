@@ -1,8 +1,8 @@
 "use client";
 
-import { Footer } from "@/components/footer";
-import { Main } from "@/components/main";
-import { Header } from "@/components/header";
+import { Footer } from "@/src/components/footer.jsx";
+import { Main } from "@/src/components/main.jsx";
+import { Header } from "@/src/components/header.jsx";
 
 export default function About() {
   return (

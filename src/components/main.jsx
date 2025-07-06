@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { Headline } from "./headline";
+import { Headline } from "./headline.jsx";
 
 export function Main(props) {
     return(
