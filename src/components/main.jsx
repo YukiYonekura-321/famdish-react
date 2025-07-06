@@ -1,11 +1,36 @@
 import Image from "next/image";
 import { Headline } from "./headline.jsx";
-import { useCallback } from "react";
+import { use, useCallback, useState } from "react";
 
 export function Main(props) {
+    const [text, SetText] = useState("");
+    const [array, setArray] = useState([]);
+
     const handleClick = useCallback(() => {
       alert("クリック！！");
     }, []);
+
+    const handleChange = useCallback((event) => {
+      if (event.target.value.length > 5) {
+        alert("5文字以下で入力してください");
+        return;
+      }
+      SetText(event.target.value.trim());
+    }, []);
+
+    const handleAdd = useCallback(() => {
+      setArray((prevArray) => {
+        if (text === "") {
+          alert("入力してください");
+          return prevArray;
+        }
+        if (prevArray.includes(text)) {
+          alert("同じ値が既に存在します");
+          return prevArray;
+        }
+        return [...prevArray, text];
+      });
+    }, [text]);
 
     return(
       <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
@@ -17,6 +42,21 @@ export function Main(props) {
         >
             Welcome to the {props.page} Page
         </Headline>
+
+
+        <input type="text" value={text} onChange={handleChange} />
+
+        <button onClick={handleAdd}>追加</button>
+
+        <ul>
+          {array.map(
+            (item) => (
+              <li key={item} className="text-sm/6 text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
+                {item}
+              </li>
+            )
+          )}
+        </ul>
 
         <Image
           className="dark:invert"
