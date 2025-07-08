@@ -20,6 +20,8 @@ export function Main(props) {
             Welcome to the {props.page} Page
         </Headline>
 
+        <p>ブロックの数は{props.items.text}個です</p>
+
 
         <input type="text" value={text} onChange={handleChange} />
 
